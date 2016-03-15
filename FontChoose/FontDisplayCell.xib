@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="81" id="eE7-Jc-lBA" customClass="FontDisplayCell">
+            <rect key="frame" x="0.0" y="0.0" width="387" height="81"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eE7-Jc-lBA" id="0xh-vc-Juy">
+                <rect key="frame" x="0.0" y="0.0" width="387" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="font name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYt-eX-tOS">
+                        <rect key="frame" x="8" y="8" width="65" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2da-7B-xjM">
+                        <rect key="frame" x="0.0" y="79" width="387" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="T1e-bb-ALh"/>
+                        </constraints>
+                    </view>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBd-co-dlj">
+                        <rect key="frame" x="73" y="30" width="240" height="41"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="41" translatesAutoresizingMaskIntoConstraints="NO" id="hwr-D8-Ddr">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="41"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="hwr-D8-Ddr" firstAttribute="leading" secondItem="DBd-co-dlj" secondAttribute="leading" id="DZv-yX-nsC"/>
+                            <constraint firstAttribute="trailing" secondItem="hwr-D8-Ddr" secondAttribute="trailing" id="G5U-4J-wTF"/>
+                            <constraint firstAttribute="bottom" secondItem="hwr-D8-Ddr" secondAttribute="bottom" id="HUL-p6-yY8"/>
+                            <constraint firstItem="hwr-D8-Ddr" firstAttribute="width" secondItem="DBd-co-dlj" secondAttribute="width" id="IFd-6p-xaQ"/>
+                            <constraint firstItem="hwr-D8-Ddr" firstAttribute="top" secondItem="DBd-co-dlj" secondAttribute="top" id="mIY-hQ-CUd"/>
+                            <constraint firstItem="hwr-D8-Ddr" firstAttribute="height" secondItem="DBd-co-dlj" secondAttribute="height" id="rQp-j8-HR8"/>
+                        </constraints>
+                    </scrollView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="leadingMargin" secondItem="fYt-eX-tOS" secondAttribute="leading" id="2E3-0v-Vux"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="2da-7B-xjM" secondAttribute="trailing" constant="-8" id="BbQ-uc-DKK"/>
+                    <constraint firstItem="DBd-co-dlj" firstAttribute="top" secondItem="fYt-eX-tOS" secondAttribute="bottom" constant="6" id="VeV-4h-ZEB"/>
+                    <constraint firstItem="DBd-co-dlj" firstAttribute="centerX" secondItem="0xh-vc-Juy" secondAttribute="centerX" id="WRf-dZ-nx9"/>
+                    <constraint firstItem="2da-7B-xjM" firstAttribute="top" secondItem="DBd-co-dlj" secondAttribute="bottom" constant="8" id="WtA-vC-Fry"/>
+                    <constraint firstAttribute="topMargin" secondItem="fYt-eX-tOS" secondAttribute="top" id="ghD-I4-f05"/>
+                    <constraint firstItem="2da-7B-xjM" firstAttribute="leading" secondItem="0xh-vc-Juy" secondAttribute="leadingMargin" constant="-8" id="jZU-yF-BKg"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="2da-7B-xjM" secondAttribute="bottom" constant="-8" id="ojH-d2-N2x"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="ContainerVIewWidthConstraint" destination="IFd-6p-xaQ" id="Jnh-5z-UyD"/>
+                <outlet property="containerScrollView" destination="DBd-co-dlj" id="5TO-CY-kiD"/>
+                <outlet property="fontNameLabel" destination="fYt-eX-tOS" id="1u1-hh-vL9"/>
+                <outlet property="scrollViewVerticalConstraint" destination="WRf-dZ-nx9" id="NkA-gs-4pD"/>
+                <outlet property="textContainerView" destination="hwr-D8-Ddr" id="ylB-Sr-HwF"/>
+            </connections>
+            <point key="canvasLocation" x="309.5" y="105.5"/>
+        </tableViewCell>
+    </objects>
+</document>
