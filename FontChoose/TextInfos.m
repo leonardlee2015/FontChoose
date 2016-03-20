@@ -51,14 +51,23 @@ static NSString * const kColor = @"color";
 }
 -(NSInteger)currentIndex{
     __block NSInteger firstCompareIndex = -1;
+    __block NSInteger firstNoneIndex = -1;
     
     [_textInfos enumerateObjectsUsingBlock:^(NSMutableDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         if ([obj[kState] integerValue] == TextInfoStateCompare) {
             firstCompareIndex = idx;
+            *stop = YES;
+        }
+        if ((firstNoneIndex==-1) && ([obj[kState] integerValue]==TextInfoStateNoneState)) {
+            firstNoneIndex = idx;
         }
     }];
     
+    if ((firstCompareIndex==-1)&&(firstNoneIndex!=-1)) {
+        [self compareTextInfoWithIndex:firstNoneIndex];
+        firstCompareIndex = firstNoneIndex ;
+    }
     return firstCompareIndex;
 }
 -(void)clearTextInfos{
@@ -88,10 +97,12 @@ static NSString * const kColor = @"color";
 }
 
 -(void)commitTextIndex:(NSInteger)index byFontNmae:(NSString *)fontName{
-    _textInfos[index][kFont] = @(TextInfoStateDesignated);
+    _textInfos[index][kState] = @(TextInfoStateDesignated);
+    _textInfos[index][kFont] = fontName;
 }
 -(void)compareTextInfoWithIndex:(NSInteger)index{
     _textInfos[index][kState] = @(TextInfoStateCompare);
+    _textInfos[index][kFont] = [NSNull null];
     [_textInfos enumerateObjectsUsingBlock:^(NSMutableDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ((idx!=index) \
             && ([_textInfos[idx][kState] integerValue] == TextInfoStateCompare)) {

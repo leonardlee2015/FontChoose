@@ -45,6 +45,22 @@
                                metrics:nil\
                                views:textViewDic]];
     
+    // 添加用于把全部字体信息添加到剪贴板到导航栏按钮
+    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithTitle:@"All" style:UIBarButtonItemStyleDone target:self action:@selector(copyAllInfos:)];
+    self.navigationItem.rightBarButtonItem = item;
+    
+}
+-(IBAction)copyAllInfos:(id)sender{
+
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"Copy All Text Infos?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertC addAction:[UIAlertAction actionWithTitle:@"Copy" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
+        pasteBoard.string = [self textfontInformation];
+    }]];
+    
+    [alertC addAction:[UIAlertAction actionWithTitle:@"canncel" style:UIAlertActionStyleDestructive handler:nil]];
+    [self presentViewController:alertC animated:YES completion:nil];
+
 }
 -(NSString*)textfontInformation{
     NSMutableString *textInfos = [NSMutableString stringWithString:@""];
@@ -72,15 +88,8 @@
 }
 
 #pragma mark - Properties
-@synthesize textInfos = _textInfos;
+@dynamic textInfos;
 -(TextInfos *)textInfos{
-    if (!_textInfos) {
-        
-        AppDelegate *delegtate = [UIApplication sharedApplication].delegate;
-        _textInfos = delegtate.textInfos;
-    }
-
-    
-    return _textInfos;
+    return [TextInfos shareTextInfos];
 }
 @end
